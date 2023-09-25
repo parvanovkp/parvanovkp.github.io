@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://parvanovkp.github.io/sitemap.xml
+Sitemap: https://www.kparvanov.com/sitemap.xml
