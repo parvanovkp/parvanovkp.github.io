@@ -18,7 +18,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a third year PhD student in the Applied Mathematics Department at the University of Colorado at Boulder. My advisor is [Prof. Stephen Becker](https://stephenbeckr.github.io/). I graduated *Summa Cum Laude* from Lake Forest College in May 2020, earning a double BA in Mathematics and Economics. 
+I am a third year PhD student in the Applied Mathematics Department at the University of Colorado Boulder. My advisor is [Prof. Stephen Becker](https://stephenbeckr.github.io/). I graduated *Summa Cum Laude* from Lake Forest College in May 2020, earning a double BA in Mathematics and Economics. 
 
 
 ##### Research Interests
