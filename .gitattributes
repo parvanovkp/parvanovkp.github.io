@@ -1,3 +1,2 @@
 *.gif filter=lfs diff=lfs merge=lfs -text
-/Users/kaloyanparvanov/Downloads/parvanovkp.github.io/assets/img/NN_Final_Project/Lorenz_attractor.gif filter=lfs diff=lfs merge=lfs -text
 /Users/kaloyanparvanov/Downloads/Lorenz_attractor.gif filter=lfs diff=lfs merge=lfs -text
