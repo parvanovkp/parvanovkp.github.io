@@ -2,11 +2,11 @@
   type: map
   contents:
     - name: Full Name
-      value: Kaloyan Parvanov
+      value: Albert Einstein
     - name: Date of Birth
-      value: 6th June 1997
+      value: 14th March 1879
     - name: Languages
-      value: English, Bulgarian, German
+      value: English, German
 
 - title: Education
   type: time_table
