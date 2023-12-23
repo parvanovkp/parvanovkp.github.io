@@ -4,7 +4,7 @@
     - name: Full Name
       value: Kal Parvanov
     - name: Date of Birth
-      value: 14th March 1879
+      value: 6th June 1997
     - name: Languages
       value: English, German, Bulgarian
 
@@ -31,16 +31,16 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      company: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
+    - title: Teaching Assistant
+      insitution: Applied Mathematics Department, University of Colorado Boulder
+      year: 2021-present
+      # description:
+      #   - Description 1.
+      #   - Description 2.
+      #   - title: Description 3.
+      #     contents:
+      #       - Sub-description 1.
+      #       - Sub-description 2.
     # - title: Visiting Professor
     #   institution: California Institute of Technology, Pasadena, California, US
     #   year: 1933
