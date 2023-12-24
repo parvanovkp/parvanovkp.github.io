@@ -11,7 +11,7 @@
 - title: Education
   type: time_table
   contents:
-    - title: MS
+    - title: MS - Applied Mathematics
       institution: University of Colorado Boulder, CO, USA
       year: 2024
       description:
@@ -21,7 +21,7 @@
         #   contents:
         #     - Sub-description 1.
         #     - Sub-description 2.
-    - title: BA
+    - title: BA - Mathematics, Economics
       institution: Lake Forest College, IL, USA
       year: 2020
       description:
