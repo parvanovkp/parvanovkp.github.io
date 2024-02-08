@@ -3,8 +3,8 @@
   contents:
     - name: Full Name
       value: Kal Parvanov
-    - name: Date of Birth
-      value: 6th June 1997
+    # - name: Date of Birth
+    #   value: 6th June 1997
     - name: Languages
       value: English, German, Bulgarian
 
