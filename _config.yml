@@ -3,12 +3,12 @@
 # -----------------------------------------------------------------------------
 
 title: blank # the website title (if blank, full name will be used instead)
-first_name: Kal
+first_name: Kaloyan
 middle_name: P.
 last_name: Parvanov
-email: kapa5547@colorado.edu
+email: parvanovkaloyan@gmail.com
 description: > 
-  My name is Kal Parvanov and I am a third year MS student at the University of Colorado Boulder. 
+  My name is Kaloyan Parvanov and I am a MS in Applied Mathematics graduate from the University of Colorado Boulder. 
   This is my personal website where I plan to share my projects, publications, and blog posts.
 footer_text: >
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.

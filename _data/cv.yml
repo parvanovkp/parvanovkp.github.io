@@ -2,7 +2,7 @@
   type: map
   contents:
     - name: Full Name
-      value: Kal Parvanov
+      value: Kaloyan Parvanov
     # - name: Date of Birth
     #   value: 6th June 1997
     - name: Languages
@@ -33,7 +33,7 @@
   contents:
     - title: Teaching Assistant
       insitution: Applied Mathematics Department, University of Colorado Boulder
-      year: 2021-present
+      year: 2021-2024
       # description:
       #   - Description 1.
       #   - Description 2.
