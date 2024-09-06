@@ -18,11 +18,11 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a recent graduate from the University of Colorado Boulder with a Master of Science in Applied Mathematics, specializing in Data Science and Machine Learning. I am actively seeking roles in Data Science, Data Analytics, or Software Engineering. My background includes strong skills in mathematical modeling, statistical analysis, and machine learning, paired with hands-on experience in developing predictive models and implementing advanced algorithms.
+I hold a Master of Science in Applied Mathematics from the University of Colorado Boulder, with a focus on Data Science and Machine Learning. I am pursuing roles in Data Science, Data Analytics, or Software Engineering, where I can apply my expertise in mathematical modeling, statistical analysis, and machine learning. I have practical experience developing predictive models and implementing complex algorithms.
 
 
-#### Research Interests
-I have explored high-dimensional probability, numerical analysis, machine learning, and neural networks. My recent research involved establishing a probability-based bound for the spectral norm of expansive matrices, bridging theoretical mathematics with practical data science applications.
+<!-- #### Research Interests
+My research has spanned high-dimensional probability, numerical analysis, machine learning, and neural networks. Most recently, I developed a probability-based bound for the spectral norm of expansive matrices, connecting abstract mathematics with real-world data science problems.
 
-I am eager to bring my analytical skills and research experience to impactful projects in a dynamic work environment.
-
+I am excited to apply my analytical skills to meaningful projects in a fast-paced, collaborative environment.
+ -->
