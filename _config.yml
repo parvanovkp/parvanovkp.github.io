@@ -167,7 +167,7 @@ giscus:
   lang: en
 
 # Disqus comments (DEPRECATED)
-disqus_shortname: al-folio # put your disqus shortname
+disqus_shortname: # put your disqus shortname
 # https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 # External sources.
@@ -647,12 +647,12 @@ jsonresume:
   - basics
   - work
   - education
-  - publications
-  - projects
-  - volunteer
-  - awards
-  - certificates
   - skills
   - languages
-  - interests
-  - references
+  - projects
+  # - publications  # Commented out
+  # - volunteer     # Commented out
+  # - awards        # Commented out
+  # - certificates  # Commented out
+  # - interests     # Commented out
+  # - references    # Commented out
