@@ -87,22 +87,12 @@
     {
       "name": "Programming Languages",
       "level": "Expert",
-      "keywords": [
-        "Python",
-        "R",
-        "SQL",
-        "C++",
-        "JavaScript"
-      ]
+      "keywords": ["Python", "R", "SQL", "C++", "JavaScript"]
     },
     {
       "name": "Machine Learning Frameworks",
       "level": "",
-      "keywords": [
-        "TensorFlow",
-        "PyTorch",
-        "scikit-learn"
-      ]
+      "keywords": ["TensorFlow", "PyTorch", "scikit-learn"]
     },
     {
       "name": "Deep Learning",
@@ -116,37 +106,22 @@
     {
       "name": "Data Analysis",
       "level": "",
-      "keywords": [
-        "pandas",
-        "NumPy",
-        "SciPy"
-      ]
+      "keywords": ["pandas", "NumPy", "SciPy"]
     },
     {
       "name": "Data Visualization",
       "level": "",
-      "keywords": [
-        "Matplotlib",
-        "Seaborn",
-        "Power BI"
-      ]
+      "keywords": ["Matplotlib", "Seaborn", "Power BI"]
     },
     {
       "name": "Web Development",
       "level": "",
-      "keywords": [
-        "FastAPI",
-        "Next.js"
-      ]
+      "keywords": ["FastAPI", "Next.js"]
     },
     {
       "name": "Tools & Platforms",
       "level": "",
-      "keywords": [
-        "Git",
-        "Docker",
-        "LaTeX"
-      ]
+      "keywords": ["Git", "Docker", "LaTeX"]
     }
   ],
   "languages": [

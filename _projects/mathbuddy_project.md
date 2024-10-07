@@ -7,4 +7,3 @@ redirect: https://mathbuddybot.vercel.app/
 importance: 2
 category: Personal
 ---
-

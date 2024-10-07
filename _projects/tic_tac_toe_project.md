@@ -7,4 +7,3 @@ redirect: https://github.com/parvanovkp/Tic-Tac-Toe-Minimax-Alpha-Beta-Pruning
 importance: 1
 category: Personal
 ---
-

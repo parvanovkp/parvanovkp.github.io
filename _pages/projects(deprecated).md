@@ -10,7 +10,7 @@ horizontal: false
 published: false
 ---
 
- <!-- pages/projects.md -->
+<!-- pages/projects.md -->
 <div class="projects">
 {%- if site.enable_project_categories and page.display_categories %}
   <!-- Display categorized projects -->
