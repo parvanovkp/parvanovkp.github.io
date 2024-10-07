@@ -5,64 +5,89 @@ permalink: /projects/
 description: This is a collection of most of the projects I have worked on so far in my career.
 nav: true
 nav_order: 2
-display_categories: [School, Personal]
+display_categories: [Personal, School]
 horizontal: false
-published: true
 ---
 
 <!-- pages/projects.md -->
 <div class="projects">
   {%- if site.enable_project_categories and page.display_categories %}
-  <!-- Display categorized projects -->
-  <div class="container">
-    <div class="row">
-      {%- for category in page.display_categories %}
-      <div class="col-md-6">
+    <!-- Display categorized projects -->
+    {% for category in page.display_categories %}
+      <a id="{{ category }}" href=".#{{ category }}">
         <h2 class="category">{{ category }}</h2>
-        {%- assign categorized_projects = site.projects | where: "category", category -%}
-        {%- assign sorted_projects = categorized_projects | sort: "importance" %}
-        <!-- Generate cards for each project -->
-        {% if page.horizontal -%}
+      </a>
+      {%- assign categorized_projects = site.projects | where: "category", category -%}
+      {%- assign sorted_projects = categorized_projects | sort: "importance" %}
+      <!-- Generate cards for each project -->
+      {% if page.horizontal -%}
         <div class="container">
-          <div class="row row-cols-1 row-cols-md-2 g-4">
-            {%- for project in sorted_projects -%}
+          <div class="row row-cols-1 row-cols-md-2 g-3">
+          {%- for project in sorted_projects -%}
             <div class="col">
-              {% include projects_horizontal.html %}
+              {% include projects_horizontal.liquid %}
             </div>
-            {%- endfor %}
+          {%- endfor %}
           </div>
         </div>
-        {%- else -%}
-        <div class="grid">
+      {%- else -%}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
           {%- for project in sorted_projects -%}
-            {% include projects.liquid %}
+            <div class="col">
+              {% include projects.liquid %}
+            </div>
           {%- endfor %}
         </div>
-        {%- endif -%}
-      </div>
-      {% endfor %}
-    </div>
-  </div>
+      {%- endif -%}
+    {% endfor %}
   {%- else -%}
-  <!-- Display projects without categories -->
-  {%- assign sorted_projects = site.projects | sort: "importance" -%}
-  <!-- Generate cards for each project -->
-  {% if page.horizontal -%}
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-      {%- for project in sorted_projects -%}
-      <div class="col">
-        {% include projects_horizontal.html %}
+    <!-- Display projects without categories -->
+    {%- assign sorted_projects = site.projects | sort: "importance" -%}
+    <!-- Generate cards for each project -->
+    {% if page.horizontal -%}
+      <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 g-3">
+        {%- for project in sorted_projects -%}
+          <div class="col">
+            {% include projects_horizontal.liquid %}
+          </div>
+        {%- endfor %}
+        </div>
       </div>
-      {%- endfor %}
-    </div>
-  </div>
-  {%- else -%}
-  <div class="grid">
-    {%- for project in sorted_projects -%}
-      {% include projects.liquid %}
-    {%- endfor %}
-  </div>
-  {%- endif -%}
+    {%- else -%}
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        {%- for project in sorted_projects -%}
+          <div class="col">
+            {% include projects.liquid %}
+          </div>
+        {%- endfor %}
+      </div>
+    {%- endif -%}
   {%- endif -%}
 </div>
+
+<style>
+  .projects .category {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .projects .card {
+    height: 100%;
+  }
+  .projects .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  .projects .card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .projects .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .projects .card-text {
+    flex-grow: 1;
+    font-size: 0.9rem;
+  }
+</style>
