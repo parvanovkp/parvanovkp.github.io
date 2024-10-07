@@ -13,12 +13,17 @@ profile:
   #  <p>Your City, State 12345</p>
 
 news: false  # includes a list of news items
-latest_posts: false  # includes a list of the newest posts
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I hold a Master of Science in Applied Mathematics from the University of Colorado Boulder, with a focus on Data Science and Machine Learning. I am pursuing roles in Data Science, Data Analytics, or Software Engineering, where I can apply my expertise in mathematical modeling, statistical analysis, and machine learning. I have practical experience developing predictive models and implementing complex algorithms.
+I am a Machine Learning specialist with a Master of Science in Applied Mathematics from the University of Colorado Boulder, specializing in ML, statistics, and numerical analysis. My professional focus is on enhancing AI model performance and reliability.
+
+As an AI Training Specialist, I excel in refining algorithms and improving model accuracy. My technical expertise includes proficiency in Python and various ML frameworks such as TensorFlow and PyTorch. I've successfully developed projects ranging from AI-powered tutoring systems to optimized game-playing algorithms, demonstrating my ability to apply theoretical knowledge to practical challenges.
+
+Beyond my professional pursuits, I maintain an active lifestyle that includes hiking and sailing. These activities complement my analytical mindset, fostering creativity and resilience.
+
+I am seeking opportunities in Data Science or AI where I can leverage my unique blend of mathematical expertise and practical coding skills to drive innovation and solve complex problems.
 
 
 <!-- #### Research Interests
