@@ -97,11 +97,7 @@
     {
       "name": "Deep Learning",
       "level": "",
-      "keywords": [
-        "Neural Networks",
-        "NLP",
-        "Physics-Informed Neural Networks (PINNs)"
-      ]
+      "keywords": ["Neural Networks", "NLP", "Physics-Informed Neural Networks (PINNs)"]
     },
     {
       "name": "Data Analysis",
