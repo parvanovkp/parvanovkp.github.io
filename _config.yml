@@ -86,9 +86,9 @@ google_site_verification: 3m9Oob5fw7DxBVE7aIi63DaBCHjNFPeluUH9jCmmMBA # your goo
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Math Musings # blog_name will be displayed in your blog page
+blog_name: The Calculated Path # blog_name will be displayed in your blog page
 blog_nav_title: Blog # your blog must have a title for it to be displayed in the nav bar
-blog_description: A personal blog where I intend to write about the topics I am interested in.
+blog_description: Exploring math, machine learning, and their applications across science and industry.
 permalink: /blog/:year/:title/
 
 # Pagination
@@ -234,8 +234,8 @@ jekyll-archives:
     tag: "/blog/tag/:name/"
     category: "/blog/category/:name/"
 
-display_tags: ["optimization", "probability", "neural networks", "machine learning", "differential equations"] # these tags will be displayed on the front page of your blog
-display_categories: ["neural networks", "probability", "optimization"] # these categories will be displayed on the front page of your blog
+display_tags: ["optimization", "probability", "neural networks", "machine learning", "differential equations", "pca", "financial analysis"]
+display_categories: ["neural networks", "probability", "optimization", "finance", "data analysis"]
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar

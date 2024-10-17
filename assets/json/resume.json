@@ -138,6 +138,18 @@
   "references": [],
   "projects": [
     {
+      "name": "Regime Shift Detection in S&P 500 Stocks",
+      "summary": "Applied PCA and Sparse PCA to analyze regime shifts in S&P 500 stocks using high-frequency data.",
+      "highlights": [
+        "Implemented full period and rolling window PCA analysis on 2-minute interval data for 457 S&P 500 stocks over 42 trading days.",
+        "Developed interactive visualizations to showcase sector-based PCA, correlation with ETF factors, and intraday pattern analysis.",
+        "Identified key market drivers and potential regime shifts, particularly around the September 2024 Fed rate cut."
+      ],
+      "startDate": "2024-08-08",
+      "endDate": "2024-10-17",
+      "url": "https://github.com/parvanovkp/RegimeShift"
+    },
+    {
       "name": "MathBuddy: AI-Powered Math Tutor",
       "summary": "Full-stack AI tutor utilizing GPT-4 for interactions and GPT-3.5-Turbo for result extraction and difficulty estimation.",
       "highlights": [
