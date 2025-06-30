@@ -17,13 +17,13 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a Machine Learning specialist with a Master of Science in Applied Mathematics from the University of Colorado Boulder, specializing in ML, statistics, and numerical analysis. My professional focus is on enhancing AI model performance and reliability.
+Hi, I'm Kaloyan. I'm a machine learning specialist who loves building things.
 
-As an AI Training Specialist, I excel in refining algorithms and improving model accuracy. My technical expertise includes proficiency in Python and various ML frameworks such as TensorFlow and PyTorch. I've successfully developed projects ranging from AI-powered tutoring systems to optimized game-playing algorithms, demonstrating my ability to apply theoretical knowledge to practical challenges.
+I have a Master's degree in Applied Mathematics, but what really gets me excited is taking an idea from a whiteboard sketch to a working application. I have hands-on experience developing projects like AI-powered tutoring systems and competitive game-playing bots using Python, TensorFlow, and PyTorch.
 
-Beyond my professional pursuits, I maintain an active lifestyle that includes hiking and sailing. These activities complement my analytical mindset, fostering creativity and resilience.
+I'm currently looking for a full-time role in Data Science or AI where I can join a creative team and help tackle the next set of interesting problems.
 
-I am seeking opportunities in Data Science or AI where I can leverage my unique blend of mathematical expertise and practical coding skills to drive innovation and solve complex problems.
+As you can see from the photo, when I'm away from the keyboard, I'm probably on a hiking trail or a sailboat.
 
 <!-- #### Research Interests
 My research has spanned high-dimensional probability, numerical analysis, machine learning, and neural networks. Most recently, I developed a probability-based bound for the spectral norm of expansive matrices, connecting abstract mathematics with real-world data science problems.

@@ -4,7 +4,7 @@
     - name: Full Name
       value: Kaloyan Parvanov
     - name: Location
-      value: Boulder, CO
+      value: Belmont, CA
     - name: Email
       value: parvanovkaloyan@gmail.com
     - name: Phone
@@ -15,8 +15,6 @@
       value: "https://github.com/parvanovkp"
     - name: Portfolio
       value: "https://www.kparvanov.com"
-    - name: Languages
-      value: "English, German, Bulgarian"
 
 - title: Education
   type: time_table
@@ -35,20 +33,25 @@
 - title: Experience
   type: time_table
   contents:
+    - title: Data Scientist
+      institution: Invictus Growth Partners
+      year: "Jan. 2025 – June 2025"
+      description:
+        - Engineered a novel LLM classification framework to systematically prioritize unstructured data from noisy and incomplete sources.
+        - Built an end-to-end semantic search system using text embeddings and a custom re-ranking algorithm for highly relevant results.
+        - Architected a scalable insights engine, using a flexible LLM classifier to operate across diverse business datasets.
     - title: AI Training Specialist
       institution: DataAnnotation & Outlier AI
-      year: "Jul. 2024 – Present"
+      year: "Jul. 2024 – Jan. 2025"
       description:
-        - Enhanced AI models by correcting coding and mathematical responses.
-        - Identified and rectified hallucinations in AI outputs.
-        - Achieved high evaluator ratings (65% excellent).
-        - Collaborated with AI teams to refine algorithms.
+        - Enhanced AI models by correcting coding and mathematical responses, improving accuracy and reliability.
+        - Identified and rectified hallucinations in AI outputs, contributing to significant error rate reduction.
     - title: Graduate Teaching Assistant
       institution: University of Colorado Boulder
       year: "Aug. 2021 – May 2024"
       description:
-        - Assisted in teaching Calculus and Differential Equations courses.
-        - Developed assignments and provided constructive feedback.
+        - Assisted in teaching mathematics courses including Calculus and Differential Equations.
+        - Provided academic support and feedback to students.
 
 - title: Projects
   type: time_table
@@ -56,32 +59,26 @@
     - title: "MathBuddy: AI-Powered Math Tutor"
       year: "Aug. 2024 – Sept. 2024"
       description:
-        - Engineered a full-stack AI tutor with over 200 users.
-        - Integrated OpenAI and Wolfram Alpha APIs.
-      link: "https://github.com/parvanovkp/MathBuddyBot"
+        - Engineered a full-stack AI tutor utilized by over 200 users, leveraging GPT-4o for interactions and GPT-3.5-Turbo for result extraction and difficulty estimation.
+        - Implemented serverless architecture with Next.js frontend and FastAPI backend, integrating OpenAI and Wolfram Alpha APIs to enhance problem-solving capabilities.
     - title: "Tic-Tac-Toe with Alpha-Beta Pruning"
       year: "June 2024"
       description:
-        - Developed an AI opponent using Alpha-Beta Pruning Minimax.
-        - Improved decision-making speed by 40%.
-      link: "https://github.com/parvanovkp/Tic-Tac-Toe-Minimax-Alpha-Beta-Pruning"
+        - Developed a Tic-Tac-Toe game featuring an AI opponent using the Alpha-Beta Pruning Minimax algorithm.
+        - Improved AI decision-making speed by 40% by reducing evaluated nodes, enhancing gameplay experience.
     - title: "ODE Solution via PINNs"
       year: "Oct. 2023 – Dec. 2023"
       description:
-        - Solved complex ODEs using Physics-Informed Neural Networks.
-        - Achieved 15% higher accuracy than traditional methods.
-      link: "https://www.kparvanov.com/blog/2023/distill/"
+        - Engineered and trained a Physics-Informed Neural Network (PINN) to accurately model the damped pendulum problem, demonstrating the successful application of a cutting-edge deep learning technique to solve complex ODEs.
 
 - title: Technical Skills
   type: list
   contents:
     - "Programming Languages: Python (Expert), R, SQL, C++, JavaScript"
-    - "Machine Learning Frameworks: TensorFlow, PyTorch, scikit-learn"
-    - "Deep Learning: Neural Networks, NLP, Physics-Informed Neural Networks (PINNs)"
-    - "Data Analysis: pandas, NumPy, SciPy"
-    - "Data Visualization: Matplotlib, Seaborn, Power BI"
+    - "AI/ML Frameworks: TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy, SciPy"
+    - "Specialized AI: Natural Language Processing (NLP), Physics-Informed Neural Networks (PINNs)"
     - "Web Development: FastAPI, Next.js"
-    - "Tools & Platforms: Git, Docker, LaTeX"
+    - "Tools & Platforms: Git, Docker, Power BI, LaTeX"
 
 - title: Honors and Awards
   type: time_table
@@ -100,10 +97,13 @@
         - Machine Learning
     - title: Artificial Intelligence
       items:
-        - AI Model Training
-        - AI Error Detection and Correction
+        - Large Language Models
+        - Semantic Search Systems
+        - AI Model Training and Optimization
 
-- title: Other Interests
+- title: Professional Summary
   type: list
   contents:
-    - "Hobbies: Hiking, Chess, Programming Projects"
+    - "AI Engineer with strong background in Applied Mathematics specializing in end-to-end LLM-powered systems"
+    - "Proven experience in architecting solutions for unstructured enterprise data classification"
+    - "Expert in building semantic search and re-ranking engines for scalable data analysis"
