@@ -234,8 +234,8 @@ jekyll-archives:
     tag: "/blog/tag/:name/"
     category: "/blog/category/:name/"
 
-display_tags: ["optimization", "probability", "neural networks", "machine learning", "differential equations", "pca", "financial analysis", "optimal stopping", "backward induction", "dynamic programming", "ergodicity", "utility theory", "decision theory"]
-display_categories: ["neural networks", "probability", "optimization", "finance", "data analysis", "mathematics", "computer science", "economics"]
+display_tags: ["optimization", "probability", "neural networks", "machine learning", "differential equations", "pca", "financial analysis", "optimal stopping", "backward induction", "dynamic programming", "ergodicity", "utility theory", "decision theory", "a/b testing", "bootstrap", "concentration inequalities"]
+display_categories: ["neural networks", "probability", "optimization", "finance", "data analysis", "mathematics", "computer science", "economics", "statistics", "data science"]
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
