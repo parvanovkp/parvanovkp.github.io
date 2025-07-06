@@ -28,7 +28,7 @@ Most A/B testing platforms default to Welch's t-test, an adaptation of the Stude
 
 $$\frac{(\bar{X}_T - \bar{X}_C) - (\mu_T - \mu_C)}{\sqrt{\frac{s_T^2}{n_T} + \frac{s_C^2}{n_C}}} \xrightarrow{d} \mathcal{N}(0,1)$$
 
-This convergence requires three conditions: **independent observations**, **finite variance**, and a **sufficiently large sample size** for the CLT to take effect. When these assumptions crumble, you need methods designed for chaos, not textbook perfection.
+This convergence requires three conditions: **independent observations**, **finite variance**, and a **sufficiently large sample size** for the CLT to take effect. When these assumptions crumble, you should switch to methods that remain valid under skewness and heavy tails.
 
 <details>
 <summary>Click to see the t-test implementation</summary>
