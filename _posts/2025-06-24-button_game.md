@@ -168,8 +168,6 @@ This brings us to the decisive question: why is this threshold rule not merely g
 
 Because the game is a finite-horizon Markov decision process, it terminates after ten presses. For such problems:
 - [**Bellman’s Principle of Optimality**](https://en.wikipedia.org/wiki/Bellman_equation#Bellman's_principle_of_optimality) guarantees that an overall best plan must embed a best plan for every remaining sub-game.
-- The corresponding [**Bellman Equation**](https://en.wikipedia.org/wiki/Bellman_equation): $$V_n = \mathbb{E}\!\bigl[\max\!\bigl(X_n,\;V_{n-1}\bigr)\bigr],$$  
-
-solved backward from $$V_1 = C/2$$, delivers the unique fixed point of the dynamic-programming operator.
+- The corresponding [**Bellman Equation**](https://en.wikipedia.org/wiki/Bellman_equation): $$V_n = \mathbb{E}\!\bigl[\max\!\bigl(X_n,\;V_{n-1}\bigr)\bigr],$$ solved backward from $$V_1 = C/2$$, delivers the unique fixed point of the dynamic-programming operator.
 
 The fixed point yields the concrete rule **“stop when the draw $$X \ge V_{n-1}$$.”** Because the Bellman operator is a contraction, no alternative policy, no matter how elaborate, can exceed the expected payoff $$V_{10}$$. Each comparison of the current draw $$x$$ with the continuation value $$V_{n-1}$$ therefore constitutes the globally optimal decision at that step (technically, the threshold rule is the first hitting time of the [*Snell envelope*](https://en.wikipedia.org/wiki/Snell_envelope), guaranteeing no other stopping rule can beat it).
