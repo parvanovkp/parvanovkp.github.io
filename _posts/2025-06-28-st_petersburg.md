@@ -273,4 +273,4 @@ The convergence demonstrates that at sufficient wealth levels, the specific mech
 
 The paradox dissolves once we specify the averaging procedure. The ensemble average is blind to the realities of time, sequence, and survival that every real person faces.
 
-You don't need a psychological theory of "utility" to explain why people don't pay much to play. You just need to model the game they are actually playing, one with a finite stake and a real risk of ruin. The value of the game is not a universal constant but a dynamic function of your personal circumstances and the specific rules under which you must operate—a conclusion that ergodicity economics formalizes and our simulation empirically verifies.
+You don't need a psychological theory of "utility" to explain why people don't pay much to play. You just need to model the game they are actually playing, one with a finite stake and a real risk of ruin. The value of the game is not a universal constant but a dynamic function of your personal circumstances and the specific rules under which you must operate, a conclusion that ergodicity economics formalizes and our simulation empirically verifies.
