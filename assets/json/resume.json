@@ -6,7 +6,7 @@
     "email": "parvanovkaloyan@gmail.com",
     "phone": "781-346-5802",
     "url": "https://www.kparvanov.com",
-    "summary": "AI Engineer with a strong background in Applied Mathematics, specializing in the design and deployment of end-to-end LLM-powered systems. Proven experience architecting novel solutions for classifying unstructured enterprise data, building sophisticated semantic search and re-ranking engines, and developing scalable tools for data analysis across diverse business contexts.",
+    "summary": "AI Engineer with a strong background in Applied Mathematics, specializing in the design and deployment of end-to-end LLM-powered systems. Proven experience architecting and deploying end-to-end AI solutions for complex challenges in large-scale data analysis, including classification and semantic search.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -34,11 +34,11 @@
       "url": "",
       "startDate": "2025-01-01",
       "endDate": "2025-06-30",
-      "summary": "Engineering LLM-powered systems for enterprise data analysis and classification.",
+      "summary": "Developed and deployed machine learning systems for complex challenges in data classification and semantic analysis.",
       "highlights": [
-        "Engineered a novel LLM classification framework to systematically prioritize unstructured data from noisy and incomplete sources.",
-        "Built an end-to-end semantic search system using text embeddings and a custom re-ranking algorithm for highly relevant results.",
-        "Architected a scalable insights engine, using a flexible LLM classifier to operate across diverse business datasets."
+        "Engineered and deployed an LLM-powered framework for the classification of large-scale, unstructured data.",
+        "Built a scalable system for semantic search and analysis, developing custom re-ranking algorithms to enhance result relevance.",
+        "Architected end-to-end AI systems, taking full ownership of the project lifecycle from initial concept to production-ready deployment."
       ]
     },
     {

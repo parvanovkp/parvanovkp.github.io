@@ -37,9 +37,9 @@
       institution: Invictus Growth Partners
       year: "Jan. 2025 – June 2025"
       description:
-        - Engineered a novel LLM classification framework to systematically prioritize unstructured data from noisy and incomplete sources.
-        - Built an end-to-end semantic search system using text embeddings and a custom re-ranking algorithm for highly relevant results.
-        - Architected a scalable insights engine, using a flexible LLM classifier to operate across diverse business datasets.
+        - Engineered and deployed an LLM-powered framework for the classification of large-scale, unstructured data.
+        - Built a scalable system for semantic search and analysis, developing custom re-ranking algorithms to enhance result relevance.
+        - Architected end-to-end AI systems, taking full ownership of the project lifecycle from initial concept to production-ready deployment.
     - title: AI Training Specialist
       institution: DataAnnotation & Outlier AI
       year: "Jul. 2024 – Jan. 2025"
