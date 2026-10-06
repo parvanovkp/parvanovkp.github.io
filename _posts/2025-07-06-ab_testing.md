@@ -6,7 +6,7 @@ description: "Why standard t-tests break down with skewed data and how bootstrap
 tags: ["a/b testing", "bootstrap", "concentration inequalities"]
 categories: ["statistics", "data science"]
 related_posts: false
-published: true
+published: false
 pretty_table: true
 ---
 
