@@ -178,4 +178,6 @@ By induction, the rule "stop when the draw $$x \ge V_{n-1}$$" is optimal at ever
 
 The same conclusion is a small instance of a general result from optimal stopping theory. The values $$\max(x, V_{n-1})$$ form the [*Snell envelope*](https://en.wikipedia.org/wiki/Snell_envelope) of the payoff process, which is the smallest supermartingale that dominates it. A classical theorem says that stopping the first time the payoff equals its Snell envelope is optimal. Here, that is exactly the first draw with $$x \ge V_{n-1}$$.
 
-*Updated October 2026: this section previously appealed to the Bellman operator being a contraction with a unique fixed point. That argument is the tool for infinite-horizon, discounted problems, where there is no last step to start from. For a finite horizon like this one, backward induction from the last press is the proof.*
+---
+
+*Revision note (October 2026).* An earlier version of the optimality section appealed to the Bellman operator being a contraction with a unique fixed point. That argument is the tool for infinite-horizon, discounted problems, where there is no last step to start from. For a finite horizon like this one, backward induction from the last press is the proof.
