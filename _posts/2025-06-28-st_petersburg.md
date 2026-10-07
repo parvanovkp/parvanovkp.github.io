@@ -2,7 +2,7 @@
 layout: post
 title: "The St. Petersburg Paradox, Re-Run Over Time"
 date: 2025-06-28 18:19:00-0700
-description: "How an old paradox reveals a deep flaw in classical economics and points the way to a more realistic model of human decision-making."
+description: "What finite wealth and repeated play do to an infinitely valuable game, and why the fair price depends on what you mean by fair."
 tags: ["ergodicity", "utility theory", "decision theory"]
 categories: ["mathematics", "economics", "computer science"]
 related_posts: false
@@ -12,37 +12,34 @@ pretty_table: true
 
 I was recently trying to explain the St. Petersburg paradox to my uncle from memory during a walk in the park. The setup is a deceptively simple coin-tossing game.
 
-> A fair coin is flipped until it lands heads for the first time. The payout is determined by the number of flips it takes. If heads appears on the 1st toss, you win $2. If on the 2nd, $4. If on the 3rd, $8, and so on, with the payout doubling each time.
+> A fair coin is flipped until it lands heads for the first time. If heads appears on the 1st toss, you win $2. If on the 2nd, $4. If on the 3rd, $8, and so on, with the payout doubling each time.
 
-**The question is: What is a fair price to pay to play this game?**
+**What is a fair price to pay to play this game?**
 
-The mathematical answer for the expected payoff is famously, and confusingly, infinite. The calculation sums the probability of each outcome multiplied by its payout:
+The expected payoff is famously, and confusingly, infinite. Each outcome contributes its probability times its payout, and every one of those terms is worth exactly one dollar.
 
 $$\mathbb{E}[X] = \left(\frac{1}{2}\right)\cdot \$2 + \left(\frac{1}{4}\right)\cdot \$4 + \left(\frac{1}{8}\right)\cdot \$8 + \dots = \sum_{n=1}^{\infty} \frac{1}{2^n} \cdot 2^n = \$1 + \$1 + \$1 + \dots = \infty$$
 
-A purely "rational" actor, according to classical theory, should be willing to pay any finite price to play. Yet, intuitively, no one would. Most people would only offer a few dollars. As I explained this, I found myself questioning the standard explanation.
+A purely "rational" actor, according to classical theory, should pay any finite price to play. Nobody would. Most people offer a few dollars, and as I explained this, I found myself questioning the standard explanation.
 
-## The Classical "Solution" and Its Context
+## The Classical "Solution"
 
-The classic solution, proposed by [Daniel Bernoulli in 1738](https://psych.fullerton.edu/mbirnbaum/psych466/articles/bernoulli_econometrica.pdf), is that people don't value money linearly. The "utility" of an extra dollar diminishes as you get wealthier. This **diminishing marginal utility**, often modeled with a logarithmic function, makes the *expected utility* of the game finite, justifying a small price.
+The classic solution, proposed by [Daniel Bernoulli in 1738](https://psych.fullerton.edu/mbirnbaum/psych466/articles/bernoulli_econometrica.pdf), is that people don't value money linearly. An extra dollar matters less the wealthier you are. Model this **diminishing marginal utility** with a logarithm and the *expected utility* of the game becomes finite, which justifies a small price.
 
-Utility theory gives a coherent normative answer and can be derived axiomatically from [Kelly-growth](https://www.princeton.edu/~wbialek/rome/refs/kelly_56.pdf) or isoelastic preference arguments. It remains the benchmark in modern finance. However, it is not the only coherent answer. My intuition suggested a different approach: 
+Expected utility rests on the von Neumann-Morgenstern axioms, and [Kelly-growth](https://www.princeton.edu/~wbialek/rome/refs/kelly_56.pdf) arguments single out the logarithm in particular. It remains the benchmark in modern finance. My intuition pointed somewhere else, though.
 
-> People subconsciously know they have **finite wealth**. 
+> People subconsciously know they have **finite wealth**.
 
-To have a real shot at the astronomical prizes that create the infinite expectation (provided the casino has unbounded credit, which is itself unrealistic), you'd need to survive a long string of losses. Most people know their starting stake would be gone long before that lucky streak arrived.
+The astronomical prizes behind the infinite expectation only arrive after long strings of losses (and only if the casino has unbounded credit, which is unrealistic in itself). Most people know their stake would be gone long before that lucky streak showed up.
 
-## A Simulation and the Risk Landscape
+## A Simulation of Finite Stakes
 
-To test this intuition, I wrote a simulation. The crucial rule, which defines how real people must play, is that **winnings cannot be used to fund more plays**. You arrive with a fixed stake, and when that money is gone, your game is over. This "Stake-Based Model" directly tests the idea that your starting capital is the most important constraint.
-
-The goal was to create a landscape of risk, showing how a player's chance of success changes across different starting stakes and entry prices.
+To test this, I wrote a simulation with one crucial rule. **Winnings cannot fund more plays.** You arrive with a fixed stake, and when it is gone, your game is over. Call this the stake-based model. How does a player's chance of breaking even change across starting stakes and entry prices?
 
 <details>
 <summary>Click to see the simulation code</summary>
 
 <pre><code class="language-python">import random
-import numpy as np
 
 def simulate_stake_play(start_stake, entry_price):
     stake = float(start_stake)
@@ -68,7 +65,7 @@ def generate_results_table():
 
     header = "| Starting Stake | " + " | ".join([f"Price = ${p}" for p in entry_prices]) + " |"
     separator = "|:---" + "|:---" * len(entry_prices) + "|"
-    print("## Simulation Results: Chance of Breaking Even or Profiting\n")
+    print("## Chance of Breaking Even or Profiting\n")
     print(header)
     print(separator)
 
@@ -91,9 +88,7 @@ if __name__ == "__main__":
 </code></pre>
 </details>
 
-Running this code produces a table that tells a clear story:
-
-## Simulation Results: Chance of Breaking Even or Profiting
+## Chance of Breaking Even or Profiting
 
 | Starting Stake | Price = $6 | Price = $8 | Price = $10 | Price = $13 |
 |:---|:---|:---|:---|:---|
@@ -102,175 +97,183 @@ Running this code produces a table that tells a clear story:
 | **$1,024** | 95.6% | 67.4% | 44.0% | 26.1% |
 | **$8,192** | 100.0% | 98.0% | 75.6% | 41.1% |
 
-This table vividly confirms the initial intuition. Reading across any row, the chance of profiting plummets as the price increases. Reading down any column, a larger stake dramatically improves a player's odds at a fixed price. The game is clearly not the same for everyone.
+An exact calculation, which convolves the payout distribution instead of sampling it, agrees with every cell to within half a percentage point. Read across a row and the odds collapse as the price rises. Read down a column and a bigger stake buys far better odds at the same price. The game is not the same for everyone.
 
-## The World of Ergodicity Economics
+## Ergodicity Economics
 
-This line of thinking led me to the work of physicist [**Ole Peters**](https://arxiv.org/abs/1011.4404) and the field of **ergodicity economics**. It turns out there was a formal name for my intuition. The problem wasn't psychology; it was that economists were using the wrong kind of average.
+This line of thinking led me to the physicist [**Ole Peters**](https://arxiv.org/abs/1011.4404) and the field of **ergodicity economics**, which gave my intuition a name. On this view the problem is not psychology. It is the kind of average being used.
 
-1.  **Ensemble Average:** This is the standard "expected value" ($$\mathbb{E}[X]$$). It's the average outcome if a million people played the game in parallel universes *at the same time*. This is what gives the result of infinity.
+The **ensemble average** is the standard expected value $$\mathbb{E}[X]$$, the average payout per player as more and more people play in parallel. Here it never settles. It creeps upward without bound, yet so slowly that a crowd of a million players would typically average only about $23 each. The infinity lives in outcomes too rare for any real crowd to see.
 
-2.  **Time Average:** This is the average outcome for *one person* playing the game over and over through time. This is what we actually experience in life.
+The **time average** follows *one person's* wealth as they play again and again. That is the average we actually live through.
 
-For many systems, these averages are the same (a property called ergodicity). But for a game like St. Petersburg, they are wildly different. Ergodicity economics argues that a rational person should optimize for the time average. This means maximizing the long-term **growth rate** of their wealth, which, for multiplicative processes, is equivalent to maximizing the expected change in the logarithm of wealth.
+When the two coincide, the system is called ergodic. Here they don't. Ergodicity economics argues that a rational person should maximize the long-term **growth rate** of their wealth, which for multiplicative processes means maximizing the expected change in log-wealth.
+
+Notice what this does and doesn't change. The resulting condition is mathematically identical to Bernoulli's logarithmic utility, as Peters himself says in his abstract. What differs is the justification. The logarithm now comes from the dynamics of repeated play rather than from an assumption about how people feel about money.
+
+That difference can be tested. If the logarithm comes from the dynamics, risk attitudes should shift when the dynamics shift. A [2021 lab study by Meder and colleagues](https://doi.org/10.1371/journal.pcbi.1009217) found risk aversion rising under multiplicative dynamics, roughly as the time-optimal model predicts. One study proves little on its own. Still, it is a genuine test.
+
+There is a caveat, too. The framework matches the growth measure to the dynamics, using the logarithm when wealth compounds and the plain average when gains simply add up. In the stake-based game, gains add up. Applied literally there, the framework hands back the plain average, which never settles, so in that game the finite stake is what keeps the price finite. Peters' logarithm needs the extra assumption that the gamble sits inside a wealth process that compounds. For most people that is reasonable, but it remains an assumption.
 
 ### The Exact Growth-Neutral Price
 
-A "fair" price `c` is one that makes the game "growth-neutral." The expected change in your log-wealth should be zero. For a player starting with total wealth `W` who **reinvests their winnings** (where `c ≤ W` is required), we can express this with the following exact equation:
+A price `c` is "growth-neutral" if it leaves expected log-wealth unchanged. For a player with total wealth `W` who **reinvests their winnings** (with `c ≤ W`), the condition reads
 
 $$\mathbb{E}[\Delta \log(W)] = \sum_{n=1}^{\infty} p_n \cdot \log(W - c + \text{payout}_n) - \log(W) = 0$$
 
-For our game, where the probability $$p_n = 1/2^n$$ and the payout is $$2^n$$ (assuming $1 as our monetary unit for the first head), this becomes:
+With $$p_n = 1/2^n$$ and a payout of $$2^n$$ (taking $1 as the unit for the first head), this becomes
 
 $$\sum_{n=1}^{\infty} \frac{1}{2^n} \log(W - c + 2^n) = \log(W)$$
 
-This equation is the formal, complete expression for the fair price in a compounding game. However, it cannot be solved algebraically to isolate `c`.
+There is no closed form for `c`. Solving it numerically is easy, though, and for large wealth a simple approximation emerges.
 
 ### Approximate Rule
 
-To find a simple, usable rule, we can derive an approximation. The key insight is that the fair price `c` should be related to the number of coin flips required to get a payout that is on the same order of magnitude as your entire wealth, `W`. Let's say this "crossover" happens after `k` flips, making the payout `2^k`. The central assumption for the approximation is that at the fair price, this transformative payout should be roughly equal to your wealth:
+Think about the toss `k` at which the payout first matches your wealth, so `2^k ≈ W` and `k ≈ log₂(W)`. Outcomes well below this crossover barely move your wealth. Each adds about $$\frac{1}{2^n} \cdot \frac{2^n}{W} = \frac{1}{W}$$ to the expected log-growth, which is the same dollar per outcome that makes the classical expectation diverge, now scaled by your wealth. There are about $$\log_2 W$$ of them. Outcomes past the crossover multiply your wealth, but they are rare enough to add only a bounded amount, and the entry price costs about $$c/W$$. Balance the books and you get
 
-$$W \approx 2^k$$
+$$c^*(W) \approx \log_2(W) + \frac{1}{\ln 2} - \frac{1}{2} \approx \log_2(W) + 0.943$$
 
-This powerful relationship can be solved for `k` by taking the base-2 logarithm of both sides:
+In other words, the fair price is roughly the expected payout over the outcomes that pay less than your wealth, one dollar each, plus a constant for the rest.
 
-$$\log_2(W) \approx \log_2(2^k) \implies \log_2(W) \approx k$$
+The constant comes out exactly. For $$c \ll W$$ the price enters as $$-c/W$$, so $$c^*$$ is close to
 
-However, solving the exact time-average equation numerically reveals that a more accurate approximation for the fair price `c` a person with wealth `W` should pay is:
+$$S(W) = W \sum_{n=1}^{\infty} \frac{1}{2^n} \ln\left(1 + \frac{2^n}{W}\right) = \sum_{n=1}^{\infty} g(n - \log_2 W), \qquad g(x) = 2^{-x}\ln(1 + 2^x).$$
 
-$$c^*(W) \approx \log_2(W) + 1$$
+Since $$g$$ tends to 1 for small outcomes and to 0 for large ones, the Euler-Maclaurin formula gives one unit per small outcome, a boundary correction of $$-\tfrac{1}{2}$$, and the integral $$\int_{-\infty}^{\infty} \big(g(x) - \mathbf{1}[x \le 0]\big)\,dx = \tfrac{1}{\ln 2}$$. (Substitute $$u = 2^x$$ and the remaining integral is exactly 1.) The leftover error is periodic in $$\log_2 W$$ and of order $$10^{-12}$$.
 
-The additional +1 term comes from the leading-order expansion of the exact equation and shrinks only logarithmically with wealth. This single equation resolves the paradox cleanly. The price is not infinite; it is a finite number that depends directly on a player's wealth.
+The approximation drops terms of order $$c^2/W$$. At $64 it gives $6.94 against an exact $7.21, and by $8,192 the two agree within a cent. My earlier rule of thumb, `log₂(W) + 1`, stays within about 20 cents over this range, but the offset is not really 1. It falls from 1.21 at $64 toward 0.943.
 
-## Empirical Validation
+Either way, the price is finite and depends directly on wealth.
 
-The `log₂(W) + 1` formula gives us the fair price for the theoretical compounding game. But what is the true fair price for the games we simulated? We created code to find the exact price that gives a 50/50 chance of success for two different scenarios:
+## Three Prices, Two Yardsticks
 
-1.  **Stake-Based Model:** Our realistic simulation where winnings are kept separate.
+So what is the fair price for the stake-based game we simulated? An earlier version of this post fell into a trap here. "Fair" needs a definition, and the formula and the simulation suggest different ones. The growth-neutral equation uses a **log-growth yardstick**, under which expected log-wealth stays put. The simulation suggests a **median yardstick**, the price that gives you even odds of leaving with at least what you came with.
 
-2.  **Total Ruin Model:** An even riskier version where running out of stake means you forfeit all winnings.
-
-By comparing the fair prices for these models, we can precisely measure the "risk premium" associated with different rules.
+The median price turns out to be easy to compute exactly. A stake `W` at price `c` buys `N = ⌊W/c⌋` games and leaves `W − Nc` in change. You walk away with at least `W` precisely when your total payout reaches `Nc`, which means **your average payout per game has to cover the ticket price**. The change drops out entirely. Instead of searching by simulation, we can convolve the payout distribution `N` times and read off the answer.
 
 <details>
-<summary>Click to see the price-finding code</summary>
+<summary>Click to see the price code</summary>
 
-<pre><code class="language-python">import random
-import math
+<pre><code class="language-python">import math
+import numpy as np
+from scipy.optimize import brentq
 
-def simulate_stake_play(start_stake, entry_price):
-    stake = float(start_stake)
-    winnings = 0.0
-    
-    while stake >= entry_price:
-        stake -= entry_price
-        flips = 1
-        while random.random() > 0.5:
-            flips += 1
-        winnings += 2**flips
-    
-    return winnings + stake
 
-def simulate_total_ruin_play(start_stake, entry_price):
-    stake = float(start_stake)
-    winnings = 0.0
-    
-    while stake >= entry_price:
-        stake -= entry_price
-        flips = 1
-        while random.random() > 0.5:
-            flips += 1
-        winnings += 2**flips
-    
-    # Total ruin: lose everything if you don't break even
-    return winnings + stake if winnings >= start_stake else 0.0
+def growth_neutral_price(W):
+    """Price c with E[log(W - c + payout)] = log(W) for one play (payout 2^n w.p. 2^-n)."""
+    n = np.arange(1, 200)
+    excess_log_growth = lambda c: np.sum(0.5**n * np.log1p((2.0**n - c) / W))
+    return brentq(excess_log_growth, 0.0, W)
 
-def find_fair_price(game_func, wealth, target_success=0.5, tolerance=0.001):
-    low = max(0.01, math.log2(wealth) - 3)
-    high = math.log2(wealth)
-    
-    for _ in range(30):
-        price = (low + high) / 2
-        if price <= 0:
-            low = 0.01
-            continue
-            
-        outcomes = [game_func(wealth, price) for _ in range(10000)]
-        success_rate = sum(1 for x in outcomes if x >= wealth) / len(outcomes)
-        
-        if abs(success_rate - target_success) < tolerance:
-            return price
-        elif success_rate > target_success:
-            low = price
-        else:
-            high = price
-    
-    return (low + high) / 2
 
-def compare_fair_prices():
-    wealth_levels = [64, 256, 1024, 8192]
-    
-    print("| Starting Stake | Exact Compounding Price | Fair Price (Stake-Based) | Fair Price (Total Ruin) |")
-    print("|:---|:---|:---|:---|")
-    
-    for w in wealth_levels:
-        exact = math.log2(w) + 1
-        stake_price = find_fair_price(simulate_stake_play, w)
-        ruin_price = find_fair_price(simulate_total_ruin_play, w)
-        
-        print(f"| **${w:,}** | ${exact:.2f} | ${stake_price:.2f} | ${ruin_price:.2f} |")
+def median_fair_price(W):
+    """Exact largest price c at which a stake-based player with stake W
+    has at least a 50% chance of walking away with >= W.
+
+    With N = floor(W / c) games, walking away with >= W  <=>  total payout S_N >= N * c,
+    so we only need the distribution of S_N (capped at W, which loses nothing here)."""
+    payouts = []                          # (payout, probability); payouts >= W lumped at W
+    n = 1
+    while 2**n < W:
+        payouts.append((2**n, 0.5**n))
+        n += 1
+    payouts.append((W, 0.5**(n - 1)))
+
+    dist = np.zeros(W + 1)
+    dist[0] = 1.0                         # distribution of min(S_N, W), starting at N = 0
+    best_price, best_games, games = 0.0, 0, 0
+    while True:
+        games += 1
+        if W / games <= best_price:       # c <= W / N, so no larger price is possible
+            return best_price, best_games
+        new = np.zeros(W + 1)
+        for v, p in payouts:              # add one more game
+            new[v:] += p * dist[:W + 1 - v]
+            new[W] += p * dist[W + 1 - v:].sum()
+        dist = new
+        tail = np.cumsum(dist[::-1])[::-1]          # tail[k] = P(S_N >= k)
+        m = np.nonzero(tail >= 0.5)[0].max()        # largest m with P(S_N >= m) >= 1/2
+        price = m / games
+        if price > W / (games + 1) and price > best_price:   # consistent with N = floor(W/c)
+            best_price, best_games = price, games
+
+
+def log_fair_stake_price(W, n_paths=200_000, step=0.005, seed=0):
+    """Largest price c (on a grid) with E[log(final wealth)] >= log(W) in the stake-based
+    game, where final wealth = S_N + leftover and N = floor(W / c). Monte Carlo."""
+    rng = np.random.default_rng(seed)
+    games_needed = {}
+    for c in np.arange(math.log2(W) - 2.5, math.log2(W) + 2.0, step):
+        games = int(W // c)
+        games_needed.setdefault(games, []).append((c, W - games * c))
+    total = np.zeros(n_paths)
+    best = 0.0
+    for games in range(1, max(games_needed) + 1):
+        total += 2.0 ** rng.geometric(0.5, n_paths)   # play one more game on every path
+        for c, leftover in games_needed.get(games, []):
+            if np.mean(np.log(total + leftover)) >= math.log(W):
+                best = max(best, c)
+    return best
+
 
 if __name__ == "__main__":
-    compare_fair_prices()
+    print("| Starting Stake | Growth-neutral, compounding (exact) "
+          "| Log yardstick, stake-based (simulated) | Median yardstick, stake-based (exact) |")
+    print("|:---|:---|:---|:---|")
+    for W in [64, 256, 1024, 8192]:
+        median_price, _ = median_fair_price(W)
+        print(f"| **${W:,}** | ${growth_neutral_price(W):.2f} "
+              f"| ${log_fair_stake_price(W):.2f} | ${median_price:.2f} |")
+
+    print()
+    print("| Starting Stake | Games N | Median price | Median price − log₂N | Gap to growth-neutral |")
+    print("|:---|:---|:---|:---|:---|")
+    for W in [64, 256, 1024, 8192, 65536]:
+        price, games = median_fair_price(W)
+        print(f"| **${W:,}** | {games:,} | ${price:.2f} | {price - math.log2(games):.2f} "
+              f"| ${growth_neutral_price(W) - price:.2f} |")
 </code></pre>
 </details>
 
-## Final Results: The Risk Premium Quantified
-
-| Starting Stake | Exact Compounding Price | Fair Price (Stake-Based) | Fair Price (Total Ruin) |
+| Starting Stake | Growth-neutral, compounding (exact) | Log yardstick, stake-based (simulated) | Median yardstick, stake-based (exact) |
 |:---|:---|:---|:---|
-| **$64** | $7.00 | $5.97 | $5.82 |
-| **$256** | $9.00 | $7.63 | $7.53 |
-| **$1,024** | $11.00 | $9.39 | $9.31 |
-| **$8,192** | $14.00 | $11.96 | $11.96 |
+| **$64** | $7.21 | $7.02 | $5.82 |
+| **$256** | $9.06 | $8.85 | $7.64 |
+| **$1,024** | $10.99 | $10.78 | $9.34 |
+| **$8,192** | $13.95 | $13.81 | $11.99 |
 
-The results clearly show the hierarchy of risk. The exact compounding price (where winnings can be reinvested) represents the theoretical upper bound for a growth-neutral game. As game rules become riskier, fair prices decrease accordingly.
+The simulated column uses 200,000 paths and is accurate to about 3 cents. The other two are exact.
 
-Because compounding reduces risk by allowing reinvestment of winnings, the exact compounding price acts as an **upper bound** above both the stake-based and total ruin prices. Our stake-based model, being more realistic but riskier than full compounding, commands a lower price. The brutal total ruin model requires the lowest price of all.
+Under the same log-growth yardstick, the stake-based rules cost only 14 to 21 cents relative to compounding. Switching yardsticks costs more than a dollar at every stake. Why so much? The median only asks whether you broke even and ignores how far a jackpot carries you past that point. The log yardstick credits jackpots, damped by the logarithm, and with payouts this lopsided that difference is large.
 
-We can now quantify the risk premium precisely. For a player with $256:
+## Why the Gap Widens with Wealth
 
-* The premium for separating stake from winnings is `$9.00 - $7.63 = $1.37`.
-* The additional premium for facing total ruin is `$7.63 - $7.53 = $0.10`.
+The median price follows a law of its own. Feller (1945, *Annals of Mathematical Statistics*) proved that the total payout from `N` St. Petersburg games satisfies $$S_N/(N \log_2 N) \to 1$$ in probability, and [Martin-Löf (1985)](https://resolve.cambridge.org/core/journals/journal-of-applied-probability/article/abs/limit-theorem-which-clarifies-the-petersburg-paradox/38C6FA462D5E0F9CBBACC25F8C0A8ED4) later described the limiting distribution of these sums. The typical average payout per game grows like `log₂N`. A stake-based player gets `N = W/c` games, so the median price should be `log₂N` plus a constant.
 
-## The Shrinking Risk Premium
+| Starting Stake | Games N | Median price | Median price − log₂N | Gap to growth-neutral |
+|:---|:---|:---|:---|:---|
+| **$64** | 11 | $5.82 | 2.36 | $1.39 |
+| **$256** | 33 | $7.64 | 2.59 | $1.42 |
+| **$1,024** | 109 | $9.34 | 2.57 | $1.65 |
+| **$8,192** | 683 | $11.99 | 2.57 | $1.96 |
+| **$65,536** | 4,454 | $14.71 | 2.59 | $2.23 |
 
-A careful examination of the results reveals a fascinating pattern. The risk premium between the stake-based and total ruin models shrinks as wealth increases:
+Past the smallest stake, the constant sits near 2.6. At a stake of about $1 million, with roughly 57,000 games, it is still 2.60. Substituting `N = W/c` gives
 
-* **$64**: $0.15 premium (2.5% of stake price)
-* **$256**: $0.10 premium (1.3% of stake price) 
-* **$1,024**: $0.08 premium (0.9% of stake price)
-* **$8,192**: Essentially zero premium
+$$c_{\text{median}} \approx \log_2 W - \log_2 \log_2 W + 2.6$$
 
-This convergence is not due to the fat-tailed nature of the payouts, but rather to a fundamental principle from probability theory: **gambler's ruin**.
+which grows more slowly than the growth-neutral price $$\log_2 W + 0.943$$. So the gap widens with wealth instead of shrinking, roughly like $$\log_2 \log_2 W$$, and reaches $2.54 at about $1 million.
 
-The total ruin penalty only applies in a very specific scenario: you must go bust (your stake runs out) *and* your cumulative winnings must still be less than your initial wealth. As your wealth increases relative to the entry price, the probability of this specific event shrinks dramatically according to [classical gambler's ruin theory](https://en.wikipedia.org/wiki/Gambler%27s_ruin).
-
-The probability of ruin before hitting a significant win scales roughly as `c/W` (entry price divided by wealth):
-
-* **$64 wealth, $6 price**: ~9.4% chance of the penalty scenario
-* **$8,192 wealth, $12 price**: ~0.1% chance of the penalty scenario
-
-As this probability approaches zero, the "insurance value" of keeping winnings separate from stake becomes negligible. Both models converge to essentially the same expected outcome because the scenario that differentiates them almost never happens.
-
-This insight reveals an important distinction in the mathematics:
-* **Fat tails** explain why the `log₂(W)` pricing formula works and why wealth matters for fair pricing
-* **Gambler's ruin probability** explains why different rule variants converge at high wealth levels
-
-The convergence demonstrates that at sufficient wealth levels, the specific mechanics of how losses are handled become less important than simply having enough capital to survive until the inevitable large payout arrives.
+The same law explains the million-player crowd from earlier. With `N = 1,000,000`, `log₂N` is about 20, and adding 2.6 gives roughly $22.5, close to the $23 median I got from simulating 400 such crowds.
 
 ## Conclusion
 
-The paradox dissolves once we specify the averaging procedure. The ensemble average is blind to the realities of time, sequence, and survival that every real person faces.
+The paradox dissolves once you pin down two things, how the game is played and what "fair" means. Model a player with finite wealth playing through time, and the price turns finite and personal, about `log₂(W) + 0.94` dollars by the growth-neutral yardstick.
 
-You don't need a psychological theory of "utility" to explain why people don't pay much to play. You just need to model the game they are actually playing, one with a finite stake and a real risk of ruin. The value of the game is not a universal constant but a dynamic function of your personal circumstances and the specific rules under which you must operate, a conclusion that ergodicity economics formalizes and our simulation empirically verifies.
+Does that make utility theory unnecessary? That is a question of interpretation, not arithmetic. The growth-neutral condition is Bernoulli's equation, and ergodicity economics changes the reason for the logarithm rather than the price it produces. Economists have pushed back on the stronger claims ([Doctor, Wakker & Wang, 2020](https://doi.org/10.1038/s41567-020-01106-x)), although Peters' reading makes a testable prediction that Bernoulli's does not.
+
+The simulation adds one more lesson. A player who just wants even odds should pay less still, and that discount grows with wealth. The value of the game depends on your circumstances, the rules you play under, and the yardstick you choose.
+
+---
+
+*Revision note (October 2026).* An earlier version labeled `log₂(W) + 1` as exact and treated the gap between a log-growth price and a median price as a cost of the game rules. It also had a "total ruin" variant whose apparent premium came from leftover change, so I removed it.

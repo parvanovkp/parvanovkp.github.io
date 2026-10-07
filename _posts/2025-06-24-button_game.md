@@ -26,9 +26,9 @@ This puzzle is not a one-off brain teaser; it's a classic example of a **finite-
 
 To analyze such problems rigorously, we model them as [**Markov Decision Processes (MDPs)**](https://en.wikipedia.org/wiki/Markov_decision_process). An MDP is a mathematical framework for decision-making in situations where outcomes are partly random and partly under the control of a decision-maker. Our game fits this framework perfectly:
 
-1.  **States:** The state at any point is simply the number of presses remaining, $$n$$.
+1.  **States:** The state at any point is the number of presses remaining, $$n$$, together with the value $$x$$ we just drew.
 2.  **Actions:** In any state (where $$n > 1$$), our actions are to `stop` or `continue`.
-3.  **The Markov Property:** Most importantly, the game is "memoryless." The decision we make with $$n$$ presses left depends only on the current state and the number we just drew, not on the history of previously rejected values. Each press is an independent event.
+3.  **The Markov Property:** Most importantly, the game is "memoryless." Because each press is independent of the others, the history of previously rejected values carries no information about future draws. The decision with $$n$$ presses left depends only on $$n$$ and the value $$x$$ in hand.
 
 Recognizing the problem as an MDP is the first step, as it allows us to bring a powerful toolkit to bear on finding the solution: the theory of dynamic programming.
 
@@ -150,7 +150,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-````
+```
 
 ### Results
 
@@ -160,14 +160,22 @@ Theoretical Expected Payoff: $86,109.82
 Simulated Average Payoff (1,000,000 games): $86,112.80
 ```
 
-The simulation beautifully converges to the theoretical result.
+The simulated average differs from the theoretical value by less than 3 dollars. With a million games, the Monte Carlo standard error is about 14 dollars, so the agreement is as close as we should expect.
 
 ## Why the Strategy is Optimal
 
-This brings us to the decisive question: why is this threshold rule not merely good, but provably **optimal**? The answer rests on two foundational results.
+This brings us to the decisive question: why is this threshold rule not merely good, but provably **optimal**? Because the game has a finite horizon, backward induction is itself the proof.
 
-Because the game is a finite-horizon Markov decision process, it terminates after ten presses. For such problems:
-- [**Bellman’s Principle of Optimality**](https://en.wikipedia.org/wiki/Bellman_equation#Bellman's_principle_of_optimality) guarantees that an overall best plan must embed a best plan for every remaining sub-game.
-- The corresponding [**Bellman Equation**](https://en.wikipedia.org/wiki/Bellman_equation): $$V_n = \mathbb{E}\!\bigl[\max\!\bigl(X_n,\;V_{n-1}\bigr)\bigr],$$ solved backward from $$V_1 = C/2$$, delivers the unique fixed point of the dynamic-programming operator.
+The argument runs by induction on the number of presses left:
 
-The fixed point yields the concrete rule **“stop when the draw $$X \ge V_{n-1}$$.”** Because the Bellman operator is a contraction, no alternative policy, no matter how elaborate, can exceed the expected payoff $$V_{10}$$. Each comparison of the current draw $$x$$ with the continuation value $$V_{n-1}$$ therefore constitutes the globally optimal decision at that step (technically, the threshold rule is the first hitting time of the [*Snell envelope*](https://en.wikipedia.org/wiki/Snell_envelope), guaranteeing no other stopping rule can beat it).
+- **Base case.** With one press left there is no decision to make, so $$V_1 = C/2$$ is the best achievable expected payoff.
+- **Inductive step.** Suppose $$V_{n-1}$$ is the best expected payoff any strategy can achieve with $$n-1$$ presses left. With $$n$$ presses left and a draw $$x$$ in hand, a strategy can either stop and receive $$x$$, or continue.
+  - Future draws are independent of everything seen so far, so continuing starts a fresh $$(n-1)$$-press game. By assumption, no strategy can expect more than $$V_{n-1}$$ in that game.
+  - So from this point no strategy can expect more than $$\max(x, V_{n-1})$$, and the threshold rule achieves exactly that.
+  - Averaging over $$x$$ shows that $$V_n = \mathbb{E}[\max(X, V_{n-1})]$$ is the best achievable value with $$n$$ presses left.
+
+By induction, the rule "stop when the draw $$x \ge V_{n-1}$$" is optimal at every stage. No strategy, however elaborate, can beat the expected payoff $$V_{10} \approx 86{,}110$$. This is Bellman's Principle of Optimality at work. The best plan for the 10-press game is built from the best plans for every shorter game.
+
+The same conclusion is a small instance of a general result from optimal stopping theory. The values $$\max(x, V_{n-1})$$ form the [*Snell envelope*](https://en.wikipedia.org/wiki/Snell_envelope) of the payoff process, which is the smallest supermartingale that dominates it. A classical theorem says that stopping the first time the payoff equals its Snell envelope is optimal. Here, that is exactly the first draw with $$x \ge V_{n-1}$$.
+
+*Updated October 2026: this section previously appealed to the Bellman operator being a contraction with a unique fixed point. That argument is the tool for infinite-horizon, discounted problems, where there is no last step to start from. For a finite horizon like this one, backward induction from the last press is the proof.*
